@@ -1,0 +1,1569 @@
+{
+	"info": {
+		"_postman_id": "44380493-955f-458d-83a3-d1a14c5a3c5c",
+		"name": "SeleniumWebDriverArchitecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AlertDemo",
+			"item": [
+				{
+					"name": "Frame",
+					"item": [
+						{
+							"name": "CreateSession-Frame",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.globals.set(\"sessionId\", pm.response.json().value.sessionId)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"capabilities\": {\n        \"alwaysMatch\": {\n            \"browserName\": \"chrome\",\n            \"acceptInsecureCerts\": false,\n            \"goog:chromeOptions\": {\n                \"w3c\": true\n            }\n        }\n    },\n    \"desiredCapabilities\": {\n        \"browserName\": \"chrome\",\n        \"acceptInsecureCerts\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/session",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OpenURL-Frame",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"url\":\"https://ui.vision/demo/webtest/frames/\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/session/:sessionId/url",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"session",
+										":sessionId",
+										"url"
+									],
+									"variable": [
+										{
+											"key": "sessionId",
+											"value": "{{sessionId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Swtich-Frame",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.globals.set(\"geteleByName\",Object.values(pm.response.json().value)[0])"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/session/:sessionId/frame",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"session",
+										":sessionId",
+										"frame"
+									],
+									"variable": [
+										{
+											"key": "sessionId",
+											"value": "{{sessionId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find-Frame",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.globals.set(\"geteleByName\",Object.values(pm.response.json().value)[0])"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"using\": \"name\",\n    \"value\": \"globalSqa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/session/:sessionId/element",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"session",
+										":sessionId",
+										"element"
+									],
+									"variable": [
+										{
+											"key": "sessionId",
+											"value": "{{sessionId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CreateSession-Alert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"sessionId\", pm.response.json().value.sessionId)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"capabilities\": {\n        \"alwaysMatch\": {\n            \"browserName\": \"chrome\",\n            \"acceptInsecureCerts\": true,\n            \"goog:chromeOptions\": {\n                \"w3c\": true\n            }\n        }\n    },\n    \"desiredCapabilities\": {\n        \"browserName\": \"chrome\",\n        \"acceptInsecureCerts\": true\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OpenURL-AlertDemo",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\":\"https://demoqa.com/alerts\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/url",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"url"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find-AlertButton",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"geteleByName\",Object.values(pm.response.json().value)[0])"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"using\": \"name\",\n    \"value\": \"alert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/element",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"element"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ClickElementByName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"using\": \"id\",\n    \"value\": \"RememberMe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/element/:elementID/click",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"element",
+								":elementID",
+								"click"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								},
+								{
+									"key": "elementID",
+									"value": "{{geteleByName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAlertText",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/alert/text",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"alert",
+								"text"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetAlertText",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Veer is good at automation\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/alert/text",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"alert",
+								"text"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DIsMissAlert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"handle\":\"A541B48ECE7340784B8EC15CEC1C040B\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/alert/dismiss",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"alert",
+								"dismiss"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AcceptAlert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"handle\":\"A541B48ECE7340784B8EC15CEC1C040B\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/session/:sessionId/alert/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"session",
+								":sessionId",
+								"alert",
+								"accept"
+							],
+							"variable": [
+								{
+									"key": "sessionId",
+									"value": "{{sessionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreateSession",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"sessionId\", pm.response.json().value.sessionId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"capabilities\": {\n        \"alwaysMatch\": {\n            \"browserName\": \"chrome\",\n            \"acceptInsecureCerts\": true,\n            \"goog:chromeOptions\": {\n                \"w3c\": true\n            }\n        }\n    },\n    \"desiredCapabilities\": {\n        \"browserName\": \"chrome\",\n        \"acceptInsecureCerts\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OpenURL",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\":\"https://www.google.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/url",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"url"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetActiveElement",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"elementId\",Object.values(pm.response.json().value)[0])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/active",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						"active"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindElementByXpath",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"geteleText\",Object.values(pm.response.json().value)[0])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"using\": \"xpath\",\n    \"value\": \"//strong[normalize-space()='Welcome, please sign in!']\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindElementByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"geteleID\",Object.values(pm.response.json().value)[0])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"using\": \"id\",\n    \"value\": \"RememberMe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindElementByID Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"getEmail\",Object.values(pm.response.json().value)[0])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"using\": \"id\",\n    \"value\": \"Email\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClickElement",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"using\": \"id\",\n    \"value\": \"Remember me\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementID/click",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementID",
+						"click"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementID",
+							"value": "{{geteleID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IsElementSelected",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/selected",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"selected"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{geteleID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetText",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{geteleText}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SetText",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"admin@yourstore.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/value",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"value"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SetText Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/clear",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"clear"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAttribute",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/attribute/:attributeName",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"attribute",
+						":attributeName"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						},
+						{
+							"key": "attributeName",
+							"value": "type"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProperties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/property/:propertyName",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"property",
+						":propertyName"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						},
+						{
+							"key": "propertyName",
+							"value": "innerText"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetElementTagName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/name",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"name"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetElementEnabled",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/enabled",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"enabled"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPageSource",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/source",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"source"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCookies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"cookieName\",Object.values(pm.response.json().value)[0].name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/cookie",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"cookie"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNamedCookie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/cookie/:cookieName",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"cookie",
+						":cookieName"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "cookieName",
+							"value": "{{cookieName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take ScreenShot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/screenshot",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"screenshot"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take ScreenShot-Element",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/element/:elementId/screenshot",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"element",
+						":elementId",
+						"screenshot"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{elementId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWindowHandle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"cookieName\",Object.values(pm.response.json().value)[0].name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/window",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"window"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewWindow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"handle\": \"20B87286DAD2AD6A47C3D08C1B27F0E9\",\n    \"type\": \"window\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/window/new",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"window",
+						"new"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewWindow Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"handle\": \"814B5DCD8EE4FB2CDC6F683261B6BA8C\",\n    \"type\": \"window\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/window/new",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"window",
+						"new"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWindowHandles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/window/handles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"window",
+						"handles"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SwitchToWindow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"handle\":\"A541B48ECE7340784B8EC15CEC1C040B\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/session/:sessionId/window",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"session",
+						":sessionId",
+						"window"
+					],
+					"variable": [
+						{
+							"key": "sessionId",
+							"value": "{{sessionId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "{{baseUrl}}",
+			"value": "{{baseUrl}}"
+		}
+	]
+}
